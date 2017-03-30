@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,20 +24,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<String> todo = new ArrayList<>();
-        todo.add("Treinar CS para o Campeonato");
-        todo.add("Teste do Bruno");
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         lvToDo = (ListView) findViewById(R.id.lvTodo);
 
-        ArrayAdapter<String> aaLvToDo = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, todo);
+        List<String> toDos = Arrays.asList( "Todo...01",
+                                            "Todo...02",
+                                            "Todo...03",
+                                            "Todo...04",
+                                            "Todo...05",
+                                            "Todo...06",
+                                            "Todo...02",
+                                            "Todo...03",
+                                            "Todo...04",
+                                            "Todo...05",
+                                            "Todo...06",
+                                            "Todo...02",
+                                            "Todo...03",
+                                            "Todo...04",
+                                            "Todo...05",
+                                            "Todo...06",
+                                            "Todo...02",
+                                            "Todo...03",
+                                            "Todo...04",
+                                            "Todo...05",
+                                            "Todo...06",
+                                            "Todo...07");
 
-        lvToDo.setAdapter(aaLvToDo);
+        ArrayAdapter<String> la =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, toDos);
 
+        lvToDo.setAdapter(la);
     }
 
     public void gotoAddToDo(View v) {
