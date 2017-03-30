@@ -1,5 +1,6 @@
 package br.grupointegrado.jucemard.todoproject;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import br.grupointegrado.jucemard.todoproject.model.ToDo;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,31 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
         lvToDo = (ListView) findViewById(R.id.lvTodo);
 
-        List<String> toDos = Arrays.asList( "Todo...01",
-                                            "Todo...02",
-                                            "Todo...03",
-                                            "Todo...04",
-                                            "Todo...05",
-                                            "Todo...06",
-                                            "Todo...02",
-                                            "Todo...03",
-                                            "Todo...04",
-                                            "Todo...05",
-                                            "Todo...06",
-                                            "Todo...02",
-                                            "Todo...03",
-                                            "Todo...04",
-                                            "Todo...05",
-                                            "Todo...06",
-                                            "Todo...02",
-                                            "Todo...03",
-                                            "Todo...04",
-                                            "Todo...05",
-                                            "Todo...06",
-                                            "Todo...07");
+        List<ToDo> toDos = new ArrayList<>();
 
-        ArrayAdapter<String> la =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, toDos);
+        try {
+            toDos.addAll((ArrayList<ToDo>) getIntent().getSerializableExtra("lista"));
+        } catch (NullPointerException e) {}
+
+        ArrayAdapter<ToDo> la =
+                new ArrayAdapter<ToDo>(this, android.R.layout.simple_list_item_1, toDos);
 
         lvToDo.setAdapter(la);
     }
@@ -60,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 //        Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                .setAction("Action", null).show();
 
-        startActivity(new Intent(this, RegisterToDoActivity.class));
+        Intent i = new Intent(this, RegisterToDoActivity.class);
+        startActivity(i);
 
     }
 

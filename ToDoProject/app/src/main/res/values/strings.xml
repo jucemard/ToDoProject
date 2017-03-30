@@ -7,8 +7,8 @@
     <string name="reg_data_entrega">Data de Entrega</string>
     <string name="reg_categoria">Categoria</string>
     <string name="reg_anexo">Anexos</string>
+    <string name="reg_prioridade">Prioridade</string>
 
     <string name="reg_salvar">Salvar</string>
     <string name="reg_cancelar">Cancelar</string>
-
 </resources>
