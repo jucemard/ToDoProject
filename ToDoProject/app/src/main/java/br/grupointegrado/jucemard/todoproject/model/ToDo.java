@@ -13,10 +13,13 @@ import java.util.Date;
 
 public class ToDo implements Serializable {
 
+    private int id;
     private String descricao;
     private Date entrega;
     private Integer prioridade;
     private Categoria categoria;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public String getDescricao() {
         return descricao;
@@ -26,14 +29,15 @@ public class ToDo implements Serializable {
         this.descricao = descricao;
     }
 
+    public String getDataEntrega () {
+        return sdf.format(this.getEntrega());
+    }
+
     public Date getEntrega() {
         return entrega;
     }
 
     public void setEntrega(String entrega) {
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
         try {
             this.entrega = sdf.parse(entrega);
         } catch (ParseException e) {}
@@ -63,5 +67,12 @@ public class ToDo implements Serializable {
     public String toString() {
         return this.getDescricao();
     }
-}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }}
 

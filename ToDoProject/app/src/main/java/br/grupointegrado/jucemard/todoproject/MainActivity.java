@@ -1,6 +1,5 @@
 package br.grupointegrado.jucemard.todoproject;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +16,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.grupointegrado.jucemard.todoproject.bd.DataBase;
 import br.grupointegrado.jucemard.todoproject.model.ToDo;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView lvToDo;
+    private DataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
         lvToDo = (ListView) findViewById(R.id.lvTodo);
 
-        List<ToDo> toDos = new ArrayList<>();
+        db = new DataBase(this);
 
-        try {
-            toDos.addAll((ArrayList<ToDo>) getIntent().getSerializableExtra("lista"));
-        } catch (NullPointerException e) {}
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        List<ToDo> toDos = db.getTodos();
 
         ArrayAdapter<ToDo> la =
                 new ArrayAdapter<ToDo>(this, android.R.layout.simple_list_item_1, toDos);

@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.grupointegrado.jucemard.todoproject.bd.DataBase;
 import br.grupointegrado.jucemard.todoproject.model.Categoria;
 import br.grupointegrado.jucemard.todoproject.model.ToDo;
-
 
 public class RegisterToDoActivity extends AppCompatActivity {
 
@@ -28,8 +28,6 @@ public class RegisterToDoActivity extends AppCompatActivity {
     private EditText edtDataEntrega;
     private RatingBar rbPrioridade;
     private Spinner spnCategoria;
-
-    private ArrayList<ToDo> todoList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +61,16 @@ public class RegisterToDoActivity extends AppCompatActivity {
         return todo;
     }
 
+    public void limpaActivity () {
+        edtDescricao.setText("");
+        edtDataEntrega.setText("");
+        rbPrioridade.setRating(0);
+
+        spnCategoria.setSelection(0);
+
+        edtDescricao.requestFocus();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -81,7 +89,11 @@ public class RegisterToDoActivity extends AppCompatActivity {
                 //Usando o método
                 ToDo todo = this.getToDo();
 
-                todoList.add(todo);
+                DataBase db = new DataBase(this);
+                db.insert(todo);
+
+                this.limpaActivity();
+                this.onBackPressed();
 
                 Toast.makeText(this, "Salvar", Toast.LENGTH_SHORT).show();
 
@@ -89,12 +101,9 @@ public class RegisterToDoActivity extends AppCompatActivity {
 
             case R.id.action_cancelar:
 
+                this.onBackPressed();
+
                 Toast.makeText(this, "Cancelar", Toast.LENGTH_SHORT).show();
-
-                Intent back = new Intent(this, MainActivity.class);
-                back.putExtra("lista", todoList);
-
-                startActivity(back);
 
                 break;
         }
