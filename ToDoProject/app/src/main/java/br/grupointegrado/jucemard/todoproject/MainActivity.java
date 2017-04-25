@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void gotoAddToDo(View v) {
 
-//        Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show();
-
         Intent i = new Intent(this, RegisterToDoActivity.class);
         startActivity(i);
 
