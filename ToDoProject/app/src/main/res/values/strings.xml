@@ -11,5 +11,8 @@
 
     <string name="reg_salvar">Salvar</string>
     <string name="reg_cancelar">Cancelar</string>
+
+    <string name="reg_editar">Editar</string>
+    <string name="reg_excluir">Excluir</string>
     <string name="title_activity_main">MainActivity</string>
 </resources>
