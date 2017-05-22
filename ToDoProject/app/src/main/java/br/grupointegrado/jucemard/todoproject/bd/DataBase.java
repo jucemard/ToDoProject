@@ -32,7 +32,7 @@ public class DataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        // criando a tabela de todo
         sqLiteDatabase.execSQL(
                 context.getResources().getString(R.string.createTodo));
 
@@ -41,6 +41,7 @@ public class DataBase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) { }
 
+    //tabela de insert
     public void insert (ToDo todo) {
 
         ContentValues cv = new ContentValues();
@@ -71,6 +72,8 @@ public class DataBase extends SQLiteOpenHelper {
 
             todos.add(todo);
         }
+
+
 
         return todos;
     }

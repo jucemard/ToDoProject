@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
 
 
     @Override
@@ -60,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
 
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
